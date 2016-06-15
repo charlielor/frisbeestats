@@ -4,12 +4,20 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="css/bootstrap.min.css" />
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <span class="navbar-brand">Frugal Efforts</span>
+                </div>
+            </div>
+            </nav>
+        {% endblock %}
         {% block javascripts %}
             <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
             <script type="text/javascript" src="js/bootstrap.min.js"></script>

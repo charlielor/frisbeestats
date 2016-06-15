@@ -49,7 +49,7 @@ class Player {
     /**
      * @ORM\Column(type="integer")
      */
-    protected $throwaways;
+    protected $throwAways;
 
     /**
      * @ORM\Column(type="integer")
@@ -91,6 +91,18 @@ class Player {
 
     public function __construct($name) {
         $this->name = $name;
+
+        $this->goals = 0;
+        $this->assists = 0;
+        $this->blocks = 0;
+        $this->callahans = 0;
+        $this->catches = 0;
+        $this->drops = 0;
+        $this->touches = 0;
+        $this->throws = 0;
+        $this->throwAways = 0;
+        $this->stalleds = 0;
+        
         $this->games = new ArrayCollection();
         $this->play = new ArrayCollection();
 
@@ -251,27 +263,27 @@ class Player {
     }
 
     /**
-     * Set throwaways
+     * Set throwAways
      *
-     * @param integer $throwaways
+     * @param integer $throwAways
      *
      * @return Player
      */
-    public function setThrowaways($throwaways)
+    public function setThrowAways($throwAways)
     {
-        $this->throwaways = $throwaways;
+        $this->throwAways = $throwAways;
 
         return $this;
     }
 
     /**
-     * Get throwaways
+     * Get throwAways
      *
      * @return integer
      */
-    public function getThrowaways()
+    public function getThrowAways()
     {
-        return $this->throwaways;
+        return $this->throwAways;
     }
 
     /**

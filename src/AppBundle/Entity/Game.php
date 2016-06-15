@@ -28,17 +28,17 @@ class Game {
     /**
      * @ORM\Column(type="integer")
      */
-    protected $tscore;
+    protected $tScore;
 
     /**
      * @ORM\Column(type="integer")
      */
-    protected $osocre;
+    protected $oSocre;
 
     /**
      * @ORM\Column(type="string")
      */
-    protected $oteamname;
+    protected $oTeamName;
 
     /**
      * @ORM\ManyToMany(targetEntity="Play", cascade={"persist"})
@@ -48,6 +48,20 @@ class Game {
      *      )
      */
     protected $plays;
+
+    /**
+     * Constructor
+     */
+    public function __construct($week, $day, $oTeamName)
+    {
+        $this->week = $week;
+        $this->day = $day;
+        $this->oTeamName = $oTeamName;
+        $this->tScore = 0;
+        $this->oSocre = 0;
+
+        $this->plays = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -108,82 +122,75 @@ class Game {
     }
 
     /**
-     * Set tscore
+     * Set tScore
      *
-     * @param integer $tscore
+     * @param integer $tScore
      *
      * @return Game
      */
-    public function setTscore($tscore)
+    public function setTScore($tScore)
     {
-        $this->tscore = $tscore;
+        $this->tScore = $tScore;
 
         return $this;
     }
 
     /**
-     * Get tscore
+     * Get tScore
      *
      * @return integer
      */
-    public function getTscore()
+    public function getTScore()
     {
-        return $this->tscore;
+        return $this->tScore;
     }
 
     /**
-     * Set osocre
+     * Set oSocre
      *
-     * @param integer $osocre
+     * @param integer $oSocre
      *
      * @return Game
      */
-    public function setOsocre($osocre)
+    public function setOSocre($oSocre)
     {
-        $this->osocre = $osocre;
+        $this->oSocre = $oSocre;
 
         return $this;
     }
 
     /**
-     * Get osocre
+     * Get oSocre
      *
      * @return integer
      */
-    public function getOsocre()
+    public function getOSocre()
     {
-        return $this->osocre;
+        return $this->oSocre;
     }
 
     /**
-     * Set oteamname
+     * Set oTeamName
      *
-     * @param string $oteamname
+     * @param string $oTeamName
      *
      * @return Game
      */
-    public function setOteamname($oteamname)
+    public function setOTeamName($oTeamName)
     {
-        $this->oteamname = $oteamname;
+        $this->oTeamName = $oTeamName;
 
         return $this;
     }
 
     /**
-     * Get oteamname
+     * Get oTeamName
      *
      * @return string
      */
-    public function getOteamname()
+    public function getOTeamName()
     {
-        return $this->oteamname;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->plays = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->oTeamName;
     }
 
     /**

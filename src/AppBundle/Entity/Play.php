@@ -29,6 +29,7 @@ class Play {
      * @ORM\Column(type="time")
      */
     protected $minutes;
+    
 
     /**
      * Get id

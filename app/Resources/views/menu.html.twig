@@ -1,16 +1,81 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="css/menu.css" />
+{% endblock %}
+
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <button id="newgame" type="button" class="btn btn-lg btn-default">New Game</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <button id="stat" type="button" class="btn btn-lg btn-default">Stats</button>
+    {{ parent() }}
+    <div id="newGameModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="newGame">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="newGameTitle">New Game</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div id="weekDiv" class="form-group">
+                            <label for="week" class="col-md-3 control-label">Week:</label>
+                            <div class="col-md-9">
+                                <input type="number" id="week" class="form-control" />
+                            </div>
+                        </div>
+                        <div id="dayDiv" class="form-group">
+                            <label for="day" class="col-md-3 control-label">Day:</label>
+                            <div class="col-md-9">
+                                <input type="number" id="day" class="form-control" />
+                            </div>
+                        </div>
+                        <div id="oTeamNameDiv" class="form-group">
+                            <label for="oTeamName" class="col-md-4 control-label">Opponent's Name:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="oTeamName" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button id="startNewGame" type="button" class="btn btn-success">Start Game!</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <div id="creatingGameModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="creatingGame">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="creatingGameTitle">Creating New Game</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="createingGame" class="text-center">Creating a new game...</p>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="form-group">
+                <button id="newGame" type="button" class="center-block btn btn-lg btn-primary menuButtons">New Game</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <button id="stat" type="button" class="center-block btn btn-lg btn-default menuButtons">Stats</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="js/menu.js"></script>
 {% endblock %}
