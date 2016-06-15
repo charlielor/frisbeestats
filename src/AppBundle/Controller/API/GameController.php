@@ -18,15 +18,6 @@ class GameController extends Controller {
         $day = $request->request->get("day");
         $oTeamName = $request->request->get("oTeamName");
 
-        $newGame = new Game($week, $day, $oTeamName);
-
-        // Get entity manager
-        $em = $this->get('doctrine.orm.entity_manager');
-
-
-        $em->persist($newGame);
-        $em->flush();
-
         $gameRepo = $this->getDoctrine()->getRepository("AppBundle:Game");
 
         $game = $gameRepo->findBy([
@@ -52,6 +43,20 @@ class GameController extends Controller {
 
             return new JsonResponse($results);
         }
+        
+        $newGame = new Game($week, $day, $oTeamName);
+
+        // Get entity manager
+        $em = $this->get('doctrine.orm.entity_manager');
+
+        $em->persist($newGame);
+        $em->flush();
+
+        $game = $gameRepo->findBy([
+            "week" => $week,
+            "day" => $day,
+            "oTeamName" => $oTeamName
+        ]);
 
         return $this->redirect('/games/' . $game[0]->getId());
     }
